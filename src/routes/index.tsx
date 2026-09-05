@@ -129,7 +129,7 @@ function Home() {
       <section className="mx-auto max-w-6xl px-6 pb-16">
 
 
-        <div className="mt-12 flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
           {[
             { icon: ShieldCheck, label: "No personal data collected" },
             { icon: Lock, label: "Notes stay on your device" },
