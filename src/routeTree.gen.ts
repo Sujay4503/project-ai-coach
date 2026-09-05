@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenerateRoute = GenerateRouteImport.update({
+  id: '/generate',
+  path: '/generate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -31,30 +37,34 @@ const RoadmapRoute = RoadmapRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/how-it-works' | '/roadmap'
+  fullPaths: '/' | '/generate' | '/how-it-works' | '/roadmap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/how-it-works' | '/roadmap'
-  id: '__root__' | '/' | '/how-it-works' | '/roadmap'
+  to: '/' | '/generate' | '/how-it-works' | '/roadmap'
+  id: '__root__' | '/' | '/generate' | '/how-it-works' | '/roadmap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GenerateRoute: typeof GenerateRoute
   HowItWorksRoute: typeof HowItWorksRoute
   RoadmapRoute: typeof RoadmapRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/generate': {
+      id: '/generate'
+      path: '/generate'
+      fullPath: '/generate'
+      preLoaderRoute: typeof GenerateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GenerateRoute: GenerateRoute,
   HowItWorksRoute: HowItWorksRoute,
   RoadmapRoute: RoadmapRoute,
 }
