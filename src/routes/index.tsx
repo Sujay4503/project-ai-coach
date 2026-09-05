@@ -67,14 +67,14 @@ function Home() {
           </PopIn>
         </div>
 
-        <div className="relative mx-auto h-[26rem] w-full max-w-md lg:h-[30rem]">
+        <div className="relative mx-auto h-[34rem] w-full max-w-md lg:h-[36rem]">
           {[
             {
               tag: "HEALTHTECH",
               title: "Patient Vitals Anomaly Tracker",
               body: "Flags abnormal wearable readings before they become emergencies.",
               score: 91,
-              pos: "top-0 right-0 w-[19rem]",
+              pos: "top-0 right-1 w-[18.5rem]",
               rotate: -3,
               delay: 0.1,
             },
@@ -83,7 +83,7 @@ function Home() {
               title: "Crop Stress Detector",
               body: "Spots leaf stress from drone photos and alerts farmers via SMS.",
               score: 87,
-              pos: "top-40 right-4 w-[18rem]",
+              pos: "top-[12.5rem] right-0 w-[17.5rem]",
               rotate: 5,
               delay: 0.22,
             },
@@ -92,7 +92,7 @@ function Home() {
               title: "Peer Doubt-Solving Bot",
               body: "Routes student questions to the right senior automatically.",
               score: 79,
-              pos: "bottom-0 left-0 w-[18rem]",
+              pos: "bottom-0 left-0 w-[17.5rem]",
               rotate: -2,
               delay: 0.34,
             },
