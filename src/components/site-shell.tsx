@@ -2,10 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { GuruChat } from "@/components/guru-chat";
+import { useAuth } from "@/lib/use-auth";
+import { supabase } from "@/integrations/supabase/client";
 
 const nav = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/generate", label: "Generate" },
+  { to: "/results", label: "My prototypes" },
   { to: "/roadmap", label: "Roadmap" },
 ] as const;
 
