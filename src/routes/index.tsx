@@ -33,37 +33,103 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
-      <section className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28">
-        <PopIn>
-          <p className="eyebrow">Final-year project mentor</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.05] font-extrabold md:text-6xl">
-            Your final-year project,{" "}
-            <span className="text-primary">planned by an AI that knows the syllabus grind.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Describe what you enjoy and what you can code. AI Guru returns three buildable project
-            ideas — each with features, technologies, development steps and ways to make it stand
-            out.
-          </p>
-        </PopIn>
-        <PopIn delay={0.15}>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link
-              to="/generate"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5"
-            >
-              Generate prototype <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              to="/how-it-works"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
-            >
-              See how it works
-            </Link>
-          </div>
-        </PopIn>
+      <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pt-16 pb-16 md:pt-24 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <PopIn>
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+              <span className="size-2 rounded-full bg-primary" />
+              AI mentor for final-year projects
+            </span>
+            <h1 className="mt-7 max-w-2xl text-[2.6rem] leading-[1.02] font-extrabold md:text-6xl">
+              Your final-year project,{" "}
+              <span className="gradient-text">mapped before you build it.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+              Tell AI Guru what you enjoy and what you already know. It finds a project worth
+              building, then coaches you through it — feature by feature, week by week.
+            </p>
+          </PopIn>
+          <PopIn delay={0.15}>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Link
+                to="/generate"
+                className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5"
+              >
+                Generate prototype <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                to="/how-it-works"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
+                See how it works
+              </Link>
+            </div>
+          </PopIn>
+        </div>
 
-        <div className="mt-12 flex flex-wrap gap-3">
+        <div className="relative mx-auto h-[38rem] w-full max-w-md lg:h-[40rem]">
+          {[
+            {
+              tag: "HEALTHTECH",
+              title: "Patient Vitals Anomaly Tracker",
+              body: "Flags abnormal wearable readings before they become emergencies.",
+              score: 91,
+              pos: "top-0 right-1 w-[18.5rem]",
+              rotate: -3,
+              delay: 0.1,
+            },
+            {
+              tag: "AGRICULTURE",
+              title: "Crop Stress Detector",
+              body: "Spots leaf stress from drone photos and alerts farmers via SMS.",
+              score: 87,
+              pos: "top-[14rem] right-0 w-[17.5rem]",
+              rotate: 5,
+              delay: 0.22,
+            },
+            {
+              tag: "EDTECH",
+              title: "Peer Doubt-Solving Bot",
+              body: "Routes student questions to the right senior automatically.",
+              score: 79,
+              pos: "bottom-0 left-0 w-[17.5rem]",
+              rotate: -2,
+              delay: 0.34,
+            },
+          ].map((c) => (
+            <motion.article
+              key={c.title}
+              className={`float-card absolute ${c.pos} p-5`}
+              initial={{ opacity: 0, y: 40, scale: 0.9, rotate: 0 }}
+              animate={{ opacity: 1, y: 0, scale: 1, rotate: c.rotate }}
+              transition={{ delay: c.delay, type: "spring", stiffness: 180, damping: 20 }}
+              whileHover={{ rotate: 0, y: -8, scale: 1.03, zIndex: 20 }}
+            >
+              <span className="rounded-md bg-primary/10 px-2 py-1 font-mono text-[10px] font-bold tracking-wider text-primary">
+                {c.tag}
+              </span>
+              <h3 className="mt-3 text-lg font-bold">{c.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{c.body}</p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary">
+                  <motion.div
+                    className="h-full rounded-full bg-primary"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${c.score}%` }}
+                    transition={{ delay: c.delay + 0.3, duration: 0.9, ease: "easeOut" }}
+                  />
+                </div>
+                <span className="font-mono text-xs font-semibold text-primary">{c.score}%</span>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+
+
+        <div className="flex flex-wrap gap-3">
           {[
             { icon: ShieldCheck, label: "No personal data collected" },
             { icon: Lock, label: "Notes stay on your device" },
