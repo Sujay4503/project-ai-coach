@@ -7,6 +7,7 @@ import { Sparkles, Loader2 } from "lucide-react";
 import { generateIdeas, type IdeaResult } from "@/lib/ideas.functions";
 import { saveBlueprints } from "@/lib/blueprint-store";
 import { SiteShell, PageHeader, Reveal, NextLink } from "@/components/site-shell";
+import { AnimatedSelect } from "@/components/animated-select";
 
 export const Route = createFileRoute("/generate")({
   head: () => ({
@@ -172,34 +173,5 @@ function Generate() {
         </Reveal>
       </section>
     </SiteShell>
-  );
-}
-
-function Select({
-  label,
-  value,
-  options,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  options: string[];
-  onChange: (v: string) => void;
-}) {
-  return (
-    <label className="grid gap-2">
-      <span className="text-sm font-semibold">{label}</span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-ring"
-      >
-        {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
-          </option>
-        ))}
-      </select>
-    </label>
   );
 }
