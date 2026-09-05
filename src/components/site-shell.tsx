@@ -125,7 +125,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 text-sm text-muted-foreground md:flex-row md:justify-between">
           <span>AI Guru — final-year project mentor</span>
-          <span className="font-mono text-xs">Powered by Lovable AI</span>
+          <span className="font-mono text-xs">Powered by AI</span>
         </div>
       </footer>
 
