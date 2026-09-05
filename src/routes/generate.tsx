@@ -109,19 +109,19 @@ function Generate() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-3">
-            <Select
+            <AnimatedSelect
               label="Domain"
               value={form.domain}
               options={domains}
               onChange={(domain) => setForm({ ...form, domain })}
             />
-            <Select
+            <AnimatedSelect
               label="Difficulty"
               value={form.difficulty}
               options={difficulties}
               onChange={(difficulty) => setForm({ ...form, difficulty })}
             />
-            <Select
+            <AnimatedSelect
               label="Time available"
               value={form.duration}
               options={durations}
