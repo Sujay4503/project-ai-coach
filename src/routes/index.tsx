@@ -67,7 +67,7 @@ function Home() {
           </PopIn>
         </div>
 
-        <div className="relative mx-auto h-[34rem] w-full max-w-md lg:h-[36rem]">
+        <div className="relative mx-auto h-[38rem] w-full max-w-md lg:h-[40rem]">
           {[
             {
               tag: "HEALTHTECH",
@@ -83,7 +83,7 @@ function Home() {
               title: "Crop Stress Detector",
               body: "Spots leaf stress from drone photos and alerts farmers via SMS.",
               score: 87,
-              pos: "top-[12.5rem] right-0 w-[17.5rem]",
+              pos: "top-[14rem] right-0 w-[17.5rem]",
               rotate: 5,
               delay: 0.22,
             },
