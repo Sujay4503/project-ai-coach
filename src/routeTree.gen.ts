@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GenerateRoute = GenerateRouteImport.update({
@@ -29,6 +36,11 @@ const HowItWorksRoute = HowItWorksRouteImport.update({
   path: '/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoadmapRoute = RoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -37,35 +49,51 @@ const RoadmapRoute = RoadmapRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/generate' | '/how-it-works' | '/roadmap'
+  fullPaths:
+    '/' | '/auth' | '/generate' | '/how-it-works' | '/results' | '/roadmap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/generate' | '/how-it-works' | '/roadmap'
-  id: '__root__' | '/' | '/generate' | '/how-it-works' | '/roadmap'
+  to: '/' | '/auth' | '/generate' | '/how-it-works' | '/results' | '/roadmap'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/generate'
+    | '/how-it-works'
+    | '/results'
+    | '/roadmap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   GenerateRoute: typeof GenerateRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  ResultsRoute: typeof ResultsRoute
   RoadmapRoute: typeof RoadmapRoute
 }
 
@@ -76,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/generate': {
@@ -92,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/roadmap': {
       id: '/roadmap'
       path: '/roadmap'
@@ -104,8 +146,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   GenerateRoute: GenerateRoute,
   HowItWorksRoute: HowItWorksRoute,
+  ResultsRoute: ResultsRoute,
   RoadmapRoute: RoadmapRoute,
 }
 export const routeTree = rootRouteImport

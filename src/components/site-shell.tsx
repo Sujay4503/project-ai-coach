@@ -2,10 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { GuruChat } from "@/components/guru-chat";
+import { useAuth } from "@/lib/use-auth";
+import { supabase } from "@/integrations/supabase/client";
 
 const nav = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/generate", label: "Generate" },
+  { to: "/results", label: "My prototypes" },
   { to: "/roadmap", label: "Roadmap" },
 ] as const;
 
@@ -53,6 +57,7 @@ export function PopIn({
 }
 
 export function SiteShell({ children }: { children: ReactNode }) {
+  const { username } = useAuth();
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur">
@@ -75,12 +80,33 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <Link
-            to="/generate"
-            className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Get my idea
-          </Link>
+          <div className="flex items-center gap-3">
+            {username ? (
+              <>
+                <span className="hidden text-sm font-semibold sm:inline">{username}</span>
+                <button
+                  type="button"
+                  onClick={() => supabase.auth.signOut()}
+                  className="rounded-full border border-border px-4 py-2 text-sm font-semibold transition-colors hover:bg-secondary"
+                >
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/auth"
+                className="rounded-full border border-border px-4 py-2 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
+                Sign up
+              </Link>
+            )}
+            <Link
+              to="/generate"
+              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+            >
+              Get my idea
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -99,6 +125,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <span className="font-mono text-xs">Powered by Lovable AI</span>
         </div>
       </footer>
+
+      <GuruChat />
     </div>
   );
 }

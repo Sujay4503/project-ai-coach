@@ -44,7 +44,7 @@ function Home() {
               to="/generate"
               className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5"
             >
-              Generate my blueprint <ArrowRight className="size-4" />
+              Generate prototype <ArrowRight className="size-4" />
             </Link>
             <Link
               to="/how-it-works"
@@ -86,7 +86,7 @@ function Home() {
               to="/generate"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5"
             >
-              Generate my blueprint <ArrowRight className="size-4" />
+              Generate prototype <ArrowRight className="size-4" />
             </Link>
           </div>
         </Reveal>
