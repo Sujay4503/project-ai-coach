@@ -74,7 +74,7 @@ function HowItWorks() {
 
         <Reveal delay={0.1}>
           <div className="mt-12 flex flex-wrap gap-3">
-            <NextLink to="/generate" label="Generate my blueprint" />
+            <NextLink to="/generate" label="Generate prototype" />
             <NextLink to="/roadmap" label="See the semester roadmap" />
           </div>
         </Reveal>

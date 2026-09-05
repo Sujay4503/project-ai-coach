@@ -5,7 +5,7 @@ import {
   Wrench,
   AlertTriangle,
   ListChecks,
-  Cpu,
+
 } from "lucide-react";
 import type { IdeaResult } from "@/lib/ideas.functions";
 
@@ -138,4 +138,3 @@ function Block({
   );
 }
 
-export { Cpu };
