@@ -99,9 +99,9 @@ function Home() {
   const [form, setForm] = useState({
     interests: "",
     skills: "",
-    domain: domains[0],
-    difficulty: difficulties[1],
-    duration: durations[1],
+    domain: "Any domain",
+    difficulty: "Moderate",
+    duration: "2 months",
   });
 
   const run = useServerFn(generateIdeas);
