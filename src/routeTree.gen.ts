@@ -15,6 +15,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as NotesRouteImport } from './routes/notes'
+import { Route as PitchRouteImport } from './routes/pitch'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as TrackerRouteImport } from './routes/tracker'
@@ -49,6 +50,11 @@ const NotesRoute = NotesRouteImport.update({
   path: '/notes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PitchRoute = PitchRouteImport.update({
+  id: '/pitch',
+  path: '/pitch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
   '/tracker': typeof TrackerRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
   '/tracker': typeof TrackerRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
   '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
   '/tracker': typeof TrackerRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/how-it-works'
     | '/notes'
+    | '/pitch'
     | '/results'
     | '/roadmap'
     | '/tracker'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/how-it-works'
     | '/notes'
+    | '/pitch'
     | '/results'
     | '/roadmap'
     | '/tracker'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/how-it-works'
     | '/notes'
+    | '/pitch'
     | '/results'
     | '/roadmap'
     | '/tracker'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   GenerateRoute: typeof GenerateRoute
   HowItWorksRoute: typeof HowItWorksRoute
   NotesRoute: typeof NotesRoute
+  PitchRoute: typeof PitchRoute
   ResultsRoute: typeof ResultsRoute
   RoadmapRoute: typeof RoadmapRoute
   TrackerRoute: typeof TrackerRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pitch': {
+      id: '/pitch'
+      path: '/pitch'
+      fullPath: '/pitch'
+      preLoaderRoute: typeof PitchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/results': {
       id: '/results'
       path: '/results'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   GenerateRoute: GenerateRoute,
   HowItWorksRoute: HowItWorksRoute,
   NotesRoute: NotesRoute,
+  PitchRoute: PitchRoute,
   ResultsRoute: ResultsRoute,
   RoadmapRoute: RoadmapRoute,
   TrackerRoute: TrackerRoute,
