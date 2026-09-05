@@ -1,5 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  ListChecks,
+  Lock,
+  MessageCircle,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
+import { motion } from "motion/react";
 import { SiteShell, PopIn, Reveal } from "@/components/site-shell";
 
 export const Route = createFileRoute("/")({
