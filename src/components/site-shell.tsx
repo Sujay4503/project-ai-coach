@@ -71,7 +71,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             AI Guru
           </Link>
-          <nav className="hidden gap-8 text-sm font-medium text-muted-foreground md:flex">
+          <nav className="hidden flex-wrap gap-5 text-sm font-medium text-muted-foreground lg:flex">
             {nav.map((n) => (
               <Link
                 key={n.to}
