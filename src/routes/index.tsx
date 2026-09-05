@@ -276,7 +276,7 @@ function Home() {
                 )}
               </button>
               <span className="text-xs text-muted-foreground">
-                Takes about 20 seconds. Nothing is saved.
+                Takes up to a minute. Nothing is saved.
               </span>
             </div>
 
