@@ -7,8 +7,11 @@ import { useAuth } from "@/lib/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 
 const nav = [
-  { to: "/how-it-works", label: "How it works" },
   { to: "/generate", label: "Generate" },
+  { to: "/dashboard", label: "Dashboard" },
+  { to: "/tracker", label: "Tracker" },
+  { to: "/notes", label: "Notes" },
+  { to: "/pitch", label: "Pitch prep" },
   { to: "/results", label: "My prototypes" },
   { to: "/roadmap", label: "Roadmap" },
 ] as const;
@@ -68,7 +71,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </span>
             AI Guru
           </Link>
-          <nav className="hidden gap-8 text-sm font-medium text-muted-foreground md:flex">
+          <nav className="hidden flex-wrap gap-5 text-sm font-medium text-muted-foreground lg:flex">
             {nav.map((n) => (
               <Link
                 key={n.to}
@@ -122,7 +125,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 text-sm text-muted-foreground md:flex-row md:justify-between">
           <span>AI Guru — final-year project mentor</span>
-          <span className="font-mono text-xs">Powered by Lovable AI</span>
+          <span className="font-mono text-xs">Powered by AI</span>
         </div>
       </footer>
 

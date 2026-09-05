@@ -11,10 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as NotesRouteImport } from './routes/notes'
+import { Route as PitchRouteImport } from './routes/pitch'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as TrackerRouteImport } from './routes/tracker'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GenerateRoute = GenerateRouteImport.update({
@@ -36,6 +45,16 @@ const HowItWorksRoute = HowItWorksRouteImport.update({
   path: '/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotesRoute = NotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PitchRoute = PitchRouteImport.update({
+  id: '/pitch',
+  path: '/pitch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
@@ -46,55 +65,99 @@ const RoadmapRoute = RoadmapRouteImport.update({
   path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackerRoute = TrackerRouteImport.update({
+  id: '/tracker',
+  path: '/tracker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
+  '/tracker': typeof TrackerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
+  '/tracker': typeof TrackerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/dashboard': typeof DashboardRoute
   '/generate': typeof GenerateRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/notes': typeof NotesRoute
+  '/pitch': typeof PitchRoute
   '/results': typeof ResultsRoute
   '/roadmap': typeof RoadmapRoute
+  '/tracker': typeof TrackerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/generate' | '/how-it-works' | '/results' | '/roadmap'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/generate'
+    | '/how-it-works'
+    | '/notes'
+    | '/pitch'
+    | '/results'
+    | '/roadmap'
+    | '/tracker'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/generate' | '/how-it-works' | '/results' | '/roadmap'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/generate'
+    | '/how-it-works'
+    | '/notes'
+    | '/pitch'
+    | '/results'
+    | '/roadmap'
+    | '/tracker'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/dashboard'
     | '/generate'
     | '/how-it-works'
+    | '/notes'
+    | '/pitch'
     | '/results'
     | '/roadmap'
+    | '/tracker'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  DashboardRoute: typeof DashboardRoute
   GenerateRoute: typeof GenerateRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  NotesRoute: typeof NotesRoute
+  PitchRoute: typeof PitchRoute
   ResultsRoute: typeof ResultsRoute
   RoadmapRoute: typeof RoadmapRoute
+  TrackerRoute: typeof TrackerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -113,6 +176,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/generate': {
       id: '/generate'
       path: '/generate'
@@ -125,6 +195,20 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes': {
+      id: '/notes'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pitch': {
+      id: '/pitch'
+      path: '/pitch'
+      fullPath: '/pitch'
+      preLoaderRoute: typeof PitchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/results': {
@@ -141,16 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tracker': {
+      id: '/tracker'
+      path: '/tracker'
+      fullPath: '/tracker'
+      preLoaderRoute: typeof TrackerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  DashboardRoute: DashboardRoute,
   GenerateRoute: GenerateRoute,
   HowItWorksRoute: HowItWorksRoute,
+  NotesRoute: NotesRoute,
+  PitchRoute: PitchRoute,
   ResultsRoute: ResultsRoute,
   RoadmapRoute: RoadmapRoute,
+  TrackerRoute: TrackerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
